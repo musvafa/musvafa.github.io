@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mustafa Al-Ogaili — Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg2: #111111;
+    --bg3: #1a1a1a;
+    --surface: #161616;
+    --border: #242424;
+    --accent: #c8f55a;
+    --accent2: #5af5c8;
+    --text: #f0f0f0;
+    --text-muted: #888;
+    --text-dim: #555;
+    --radius: 2px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* Grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.35;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 3rem;
+    border-bottom: 1px solid var(--border);
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-logo {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 8rem 3rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -52%);
+    font-size: clamp(8rem, 20vw, 18rem);
+    font-weight: 800;
+    color: transparent;
+    -webkit-text-stroke: 1px #242424;
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: -0.04em;
+    user-select: none;
+    z-index: 0;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(200,245,90,0.1);
+    border: 1px solid rgba(200,245,90,0.3);
+    color: var(--accent);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border-radius: 100px;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    width: fit-content;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .hero-name {
+    font-size: clamp(3.5rem, 8vw, 7.5rem);
+    font-weight: 800;
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .hero-name em {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+    font-size: 1.05em;
+  }
+
+  .hero-tagline {
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 480px;
+    font-weight: 400;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 3.5rem;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .stat-num {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .stat-num span {
+    color: var(--accent);
+  }
+
+  .stat-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-dim);
+    font-weight: 600;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--accent);
+    color: #0a0a0a;
+    padding: 0.85rem 2rem;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: #d8ff70;
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: var(--text-muted);
+    padding: 0.85rem 2rem;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--text-muted);
+    color: var(--text);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 6rem 3rem;
+    border-top: 1px solid var(--border);
+    position: relative;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    font-weight: 700;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title em {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+
+  /* ── EXPERIENCE ── */
+  .exp-grid {
+    display: grid;
+    gap: 0;
+  }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 2rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+
+  .exp-item:first-child { border-top: 1px solid var(--border); }
+
+  .exp-item:hover { background: rgba(255,255,255,0.01); }
+
+  .exp-meta {
+    padding-top: 0.2rem;
+  }
+
+  .exp-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+  }
+
+  .exp-company {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .exp-location {
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    margin-top: 0.25rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+  }
+
+  .exp-content {}
+
+  .exp-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .exp-bullets li {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  .exp-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.75rem;
+    top: 0.05em;
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .project-card {
+    background: var(--bg);
+    padding: 2.5rem;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .project-card:hover::before { transform: scaleX(1); }
+  .project-card:hover { background: var(--bg2); }
+
+  .project-tag {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .project-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .project-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+  }
+
+  .project-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tool-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    padding: 0.2rem 0.6rem;
+    letter-spacing: 0.05em;
+    font-weight: 400;
+  }
+
+  /* ── SKILLS ── */
+  .skills-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .skill-group {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    position: relative;
+  }
+
+  .skill-group-title {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .skill-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-pill {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    padding: 0.3rem 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: all 0.15s;
+    cursor: default;
+  }
+
+  .skill-pill:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ── EDUCATION ── */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .edu-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .edu-card::after {
+    content: attr(data-year);
+    position: absolute;
+    bottom: -0.5rem;
+    right: 1rem;
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--border);
+    line-height: 1;
+    pointer-events: none;
+    letter-spacing: -0.05em;
+  }
+
+  .edu-degree-type {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+  }
+
+  .edu-degree {
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+
+  .edu-school {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+  }
+
+  .edu-meta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .edu-chip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--bg2);
+  }
+
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .contact-headline {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+  }
+
+  .contact-headline em {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+
+  .contact-sub {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 380px;
+    font-weight: 400;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 0.5rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    text-decoration: none;
+    color: var(--text);
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+    background: var(--surface);
+  }
+
+  .contact-link:hover {
+    border-color: var(--accent);
+    background: rgba(200,245,90,0.03);
+  }
+
+  .contact-link-icon {
+    width: 40px; height: 40px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .contact-link-info {}
+  .contact-link-type {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+
+  .contact-link-value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem 3rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-name {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    font-weight: 700;
+  }
+
+  .footer-copy {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-dim);
+  }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+    #hero { padding: 7rem 1.5rem 4rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .skills-layout { grid-template-columns: 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-stats { gap: 2rem; flex-wrap: wrap; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">MAO</div>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-text">DATA</div>
+
+  <div class="hero-badge">Open to full-time opportunities</div>
+
+  <h1 class="hero-name">
+    Mustafa<br><em>Al-Ogaili.</em>
+  </h1>
+
+  <p class="hero-tagline">
+    Data Analyst & Business Intelligence professional — turning complex datasets into clear decisions. Master's candidate at University of Michigan, specializing in Applied Data Analytics.
+  </p>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">3.9<span>/4.0</span></div>
+      <div class="stat-label">Master's GPA</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">22<span>%</span></div>
+      <div class="stat-label">Voter engagement lift</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">25<span>%</span></div>
+      <div class="stat-label">Faster integration</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5<span>M+</span></div>
+      <div class="stat-label">Grants secured</div>
+    </div>
+  </div>
+
+  <div class="hero-cta">
+    <a href="#experience" class="btn-primary">View Experience</a>
+    <a href="#contact" class="btn-secondary">Get in Touch</a>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Career</div>
+
+  <div class="exp-grid">
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-date">Sept 2025 — Current</div>
+        <div class="exp-company">First National Bank of America</div>
+        <div class="exp-location">East Lansing, MI</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-title">Business Analyst</div>
+        <ul class="exp-bullets">
+          <li>Analyzed large datasets to identify trends and anomalies for BSA/AML compliance and regulatory reporting</li>
+          <li>Conducted model governance testing and data validation to ensure accuracy of fraud monitoring systems via Verafin</li>
+          <li>Compiled and organized data for OCC-MLR and annual BSA risk assessments to streamline reporting</li>
+          <li>Built and maintained reporting frameworks using advanced Excel to support compliance and efficiency</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-date">Aug 2025 — Current</div>
+        <div class="exp-company">University of Michigan</div>
+        <div class="exp-location">Ann Arbor, MI</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-title">Instructional Aide — Programming & Data Analysis</div>
+        <ul class="exp-bullets">
+          <li>Facilitated discussion sections providing Python and R support for SI 507 and SI 544 courses</li>
+          <li>Helped develop and grade assignments including discussion posts, labs, and exams</li>
+          <li>Guided students in debugging, coding practices, and statistical data analysis</li>
+          <li>Collaborated with instructors to refine course materials and enhance student learning outcomes</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-date">May 2025 — Sept 2025</div>
+        <div class="exp-company">Indiana University</div>
+        <div class="exp-location">Remote</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-title">Data Science Intern</div>
+        <ul class="exp-bullets">
+          <li>Developed standardized ontologies to model research datasets, boosting interoperability and cutting integration time by 25%</li>
+          <li>Engineered and fine-tuned LLM prompts to enhance NLP-driven data labeling workflows</li>
+          <li>Automated data transformation pipelines to convert unstructured outputs into machine-readable formats</li>
+          <li>Evaluated LLM output quality to inform the design of scalable, AI-assisted data processing tools</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-date">Apr 2025 — Sept 2025</div>
+        <div class="exp-company">University of Michigan — UMSI</div>
+        <div class="exp-location">Ann Arbor, MI</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-title">Program Assistant</div>
+        <ul class="exp-bullets">
+          <li>Analyzed email metrics to refine outreach strategy and improve engagement</li>
+          <li>Designed onboarding materials and a Canvas site to support prospective students</li>
+          <li>Maintained the program's Google Sites hub, improving navigation and key info access</li>
+          <li>Coordinated outreach events and adapted messaging based on student feedback</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-date">May 2024 — Nov 2024</div>
+        <div class="exp-company">Civic Operations Group & Second Street Associates</div>
+        <div class="exp-location">East Lansing, MI</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-title">Campaign Manager</div>
+        <ul class="exp-bullets">
+          <li>Developed data-driven outreach models that increased voter engagement by 22% through targeted strategies</li>
+          <li>Analyzed campaign data to boost policy awareness 25% and improve operational efficiency</li>
+          <li>Streamlined communication workflows using Excel, reducing costs by 15%</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Work</div>
+  <h2 class="section-title" style="margin-bottom:3rem;">Featured <em>Projects</em></h2>
+
+  <div class="projects-grid">
+
+    <div class="project-card reveal">
+      <div class="project-tag">AI & Data Analysis</div>
+      <div class="project-title">AI-Powered Job Matching Agent</div>
+      <p class="project-desc">
+        Built a job matching agent using LangChain and OpenAI for personalized career recommendations. Boosted accuracy and contextual relevance with a RAG pipeline powered by real-time labor market data, with a dynamic conversational interface optimized for UX.
+      </p>
+      <div class="project-tools">
+        <span class="tool-tag">Python</span>
+        <span class="tool-tag">LangChain</span>
+        <span class="tool-tag">OpenAI API</span>
+        <span class="tool-tag">RAG</span>
+        <span class="tool-tag">NLP</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-tag">Market Analysis</div>
+      <div class="project-title">Live Stock Market Display</div>
+      <p class="project-desc">
+        Built a real-time stock visualization for the top 20 S&P 500 stocks on an 8×32 LED matrix. Leveraged Python libraries for data fetching, processing, and smooth display. Fetches live data via API and updates the display in real time.
+      </p>
+      <div class="project-tools">
+        <span class="tool-tag">Python</span>
+        <span class="tool-tag">pandas</span>
+        <span class="tool-tag">requests</span>
+        <span class="tool-tag">PIL</span>
+        <span class="tool-tag">numpy</span>
+        <span class="tool-tag">REST API</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Toolkit</div>
+  <h2 class="section-title" style="margin-bottom:3rem;">Technical <em>Skills</em></h2>
+
+  <div class="skills-layout">
+    <div class="skill-group reveal">
+      <div class="skill-group-title">Programming & Tools</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">R / RStudio</span>
+        <span class="skill-pill">SQL</span>
+        <span class="skill-pill">SAP</span>
+        <span class="skill-pill">Snowflake</span>
+        <span class="skill-pill">Git</span>
+        <span class="skill-pill">Excel</span>
+        <span class="skill-pill">Tableau</span>
+        <span class="skill-pill">Power BI</span>
+        <span class="skill-pill">Verafin</span>
+      </div>
+    </div>
+
+    <div class="skill-group reveal">
+      <div class="skill-group-title">Data Science & Analysis</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Machine Learning</span>
+        <span class="skill-pill">AI / LLMs</span>
+        <span class="skill-pill">NLP</span>
+        <span class="skill-pill">Data Cleaning</span>
+        <span class="skill-pill">Data Visualization</span>
+        <span class="skill-pill">Business Analytics</span>
+        <span class="skill-pill">Statistical Modeling</span>
+        <span class="skill-pill">RAG Pipelines</span>
+      </div>
+    </div>
+
+    <div class="skill-group reveal">
+      <div class="skill-group-title">Business & Finance</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Financial Modeling</span>
+        <span class="skill-pill">Risk & Compliance</span>
+        <span class="skill-pill">BSA / AML</span>
+        <span class="skill-pill">Business Intelligence</span>
+        <span class="skill-pill">Regulatory Reporting</span>
+        <span class="skill-pill">Stakeholder Mgmt</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">Background</div>
+  <h2 class="section-title" style="margin-bottom:3rem;"><em>Education</em></h2>
+
+  <div class="edu-grid">
+    <div class="edu-card reveal" data-year="'26">
+      <div class="edu-degree-type">Master's Degree · Graduating May 2026</div>
+      <div class="edu-degree">M.S. in Information — Applied Data Analytics</div>
+      <div class="edu-school">University of Michigan — School of Information, Ann Arbor, MI</div>
+      <div class="edu-meta">
+        <span class="edu-chip">GPA: 3.9 / 4.0</span>
+        <span class="edu-chip">Machine Learning · Data Modeling · Programming</span>
+      </div>
+    </div>
+
+    <div class="edu-card reveal" data-year="'23">
+      <div class="edu-degree-type">Bachelor's Degree · Aug 2023</div>
+      <div class="edu-degree">B.A. in Psychology — Pre-Medical Studies</div>
+      <div class="edu-school">University of Michigan — College of LSA, Ann Arbor, MI</div>
+      <div class="edu-meta">
+        <span class="edu-chip">Research Methods · Statistics · Behavioral Analysis</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-layout">
+    <div>
+      <div class="section-label">Say Hello</div>
+      <h2 class="contact-headline">Let's work<br><em>together.</em></h2>
+      <p class="contact-sub">
+        Actively seeking full-time roles in data analytics, business intelligence, and data science. Whether you have a role, a project, or just want to connect — reach out.
+      </p>
+    </div>
+
+    <div class="contact-links reveal">
+      <a href="mailto:Must@umich.edu" class="contact-link">
+        <div class="contact-link-icon">✉</div>
+        <div class="contact-link-info">
+          <div class="contact-link-type">Email</div>
+          <div class="contact-link-value">Must@umich.edu</div>
+        </div>
+      </a>
+
+      <a href="tel:5175056006" class="contact-link">
+        <div class="contact-link-icon">☎</div>
+        <div class="contact-link-info">
+          <div class="contact-link-type">Phone</div>
+          <div class="contact-link-value">517-505-6006</div>
+        </div>
+      </a>
+
+      <a href="https://www.linkedin.com/in/mustafa-al-ogaili" target="_blank" class="contact-link">
+        <div class="contact-link-icon">in</div>
+        <div class="contact-link-info">
+          <div class="contact-link-type">LinkedIn</div>
+          <div class="contact-link-value">Mustafa Al-Ogaili</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Mustafa Al-Ogaili</div>
+  <div class="footer-copy">© 2025 · Built for GitHub Pages</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav active state
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--accent)' : '';
+    });
+  });
+</script>
+</body>
+</html>
