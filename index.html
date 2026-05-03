@@ -121,12 +121,12 @@
     margin: 0 auto;
     padding: 64px 3rem 0;
     display: grid;
-    grid-template-columns: 1fr 380px;
+    grid-template-columns: 1fr 340px;
     align-items: center;
-    gap: 5rem;
+    gap: 4rem;
   }
 
-  .hero-left { padding-top: 2rem; }
+  .hero-left { padding-top: 1rem; }
 
   .hero-badge {
     display: inline-flex;
@@ -160,11 +160,11 @@
   }
 
   .hero-heading {
-    font-size: clamp(3.5rem, 7vw, 6.8rem);
+    font-size: clamp(2.4rem, 4.2vw, 4.2rem);
     font-weight: 800;
-    line-height: 1.0;
-    letter-spacing: -0.04em;
-    margin-bottom: 1.5rem;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.25rem;
     animation: fadeUp 0.5s 0.08s ease both;
   }
 
@@ -176,12 +176,12 @@
   }
 
   .hero-tagline {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: var(--text-muted);
-    max-width: 480px;
+    max-width: 420px;
     font-weight: 400;
     line-height: 1.75;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     animation: fadeUp 0.5s 0.14s ease both;
   }
 
@@ -227,16 +227,17 @@
 
   .hero-stats {
     display: flex;
-    gap: 2.5rem;
-    padding-top: 2.5rem;
+    gap: 2rem;
+    padding-top: 2rem;
     border-top: 1px solid var(--border);
     animation: fadeUp 0.5s 0.22s ease both;
+    flex-wrap: wrap;
   }
 
   .stat { display: flex; flex-direction: column; gap: 0.2rem; }
 
   .stat-num {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 800;
     line-height: 1;
     letter-spacing: -0.03em;
@@ -257,9 +258,9 @@
   .hero-photo-wrap {
     animation: fadeUp 0.5s 0.1s ease both;
     position: relative;
-    align-self: stretch;
+    align-self: center;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
   }
 
   .hero-photo-inner {
@@ -279,7 +280,7 @@
 
   .hero-photo {
     width: 100%;
-    height: 520px;
+    height: 420px;
     object-fit: cover;
     object-position: center top;
     display: block;
@@ -786,7 +787,7 @@
     <div class="hero-badge">Open to full-time opportunities</div>
 
     <h1 class="hero-heading">
-      Data Analyst<br>&amp;<br><em>Business Intelligence.</em>
+      Data Analyst &amp; <em>Business Intelligence.</em>
     </h1>
 
     <p class="hero-tagline">
