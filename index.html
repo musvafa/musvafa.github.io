@@ -160,10 +160,10 @@
   }
 
   .hero-heading {
-    font-size: clamp(2.8rem, 5.5vw, 5.2rem);
+    font-size: clamp(3.5rem, 7vw, 6.8rem);
     font-weight: 800;
     line-height: 1.0;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em;
     margin-bottom: 1.5rem;
     animation: fadeUp 0.5s 0.08s ease both;
   }
@@ -194,32 +194,32 @@
 
   .btn-primary {
     display: inline-block;
-    background: var(--text);
-    color: var(--bg);
-    padding: 0.75rem 1.75rem;
+    background: var(--accent);
+    color: #0b0b0b;
+    padding: 0.85rem 2rem;
     font-family: 'Manrope', sans-serif;
-    font-size: 0.72rem;
+    font-size: 0.8rem;
     font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    letter-spacing: 0.06em;
     text-decoration: none;
+    border-radius: 6px;
     transition: all 0.2s;
   }
 
-  .btn-primary:hover { background: #ccc; }
+  .btn-primary:hover { background: #a8d4e8; }
 
   .btn-outline {
     display: inline-block;
     background: transparent;
     color: var(--text-muted);
-    padding: 0.75rem 1.75rem;
+    padding: 0.85rem 2rem;
     font-family: 'Manrope', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
     text-decoration: none;
     border: 1px solid var(--border2);
+    border-radius: 6px;
     transition: all 0.2s;
   }
 
@@ -265,6 +265,8 @@
   .hero-photo-inner {
     position: relative;
     width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
   }
 
   .hero-photo-inner::after {
@@ -281,19 +283,11 @@
     object-fit: cover;
     object-position: center top;
     display: block;
-    filter: grayscale(15%);
+    filter: grayscale(10%);
+    border-radius: 12px;
   }
 
-  .hero-photo-border {
-    position: absolute;
-    bottom: -12px;
-    right: -12px;
-    width: 100%;
-    height: 100%;
-    border: 1px solid var(--accent-border);
-    pointer-events: none;
-    z-index: -1;
-  }
+  .hero-photo-border { display: none; }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -317,29 +311,23 @@
     margin-bottom: 3.5rem;
   }
 
-  .section-tag {
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    font-weight: 700;
-    font-family: 'JetBrains Mono', monospace;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.6rem;
+  .section-meta .section-tag {
+    margin-bottom: 0.3rem;
   }
 
-  .section-tag::after {
-    content: '';
+  .section-tag {
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 800;
+    font-family: 'Manrope', sans-serif;
     display: block;
-    width: 32px;
-    height: 1px;
-    background: var(--text-dim);
+    margin-bottom: 0.5rem;
   }
 
   .section-heading {
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(2.4rem, 4.5vw, 3.4rem);
     font-weight: 800;
     letter-spacing: -0.03em;
     line-height: 1.0;
@@ -798,11 +786,11 @@
     <div class="hero-badge">Open to full-time opportunities</div>
 
     <h1 class="hero-heading">
-      Data Analyst &amp;<br><em>Business Intelligence.</em>
+      Data Analyst<br>&amp;<br><em>Business Intelligence.</em>
     </h1>
 
     <p class="hero-tagline">
-      Hi, I'm Mustafa Al-Ogaili — a University of Michigan Master's candidate bridging applied data analytics with business intelligence. I turn complex datasets into decisions that move organizations forward.
+      Hi, I'm Mustafa Al-Ogaili, a University of Michigan graduate with a Master's in Applied Data Analytics, bridging data science with business intelligence. I turn complex datasets into decisions that move organizations forward.
     </p>
 
     <div class="hero-cta">
@@ -816,16 +804,16 @@
         <div class="stat-label">Master's GPA</div>
       </div>
       <div class="stat">
-        <div class="stat-num">3<em>+</em></div>
-        <div class="stat-label">Years experience</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">3</div>
-        <div class="stat-label">Featured projects</div>
+        <div class="stat-num">22<em>%</em></div>
+        <div class="stat-label">Voter engagement lift</div>
       </div>
       <div class="stat">
         <div class="stat-num">10<em>+</em></div>
-        <div class="stat-label">Tools mastered</div>
+        <div class="stat-label">Dashboards &amp; reports built</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">25<em>%</em></div>
+        <div class="stat-label">Faster data integration</div>
       </div>
     </div>
   </div>
@@ -5291,7 +5279,7 @@ VT8H9wvxX2P/2Q==" alt="Mustafa Al-Ogaili">
 
     <div class="exp-row reveal">
       <div class="exp-left">
-        <div class="exp-date">Aug 2025 —<br>Current</div>
+        <div class="exp-date">Aug 2025 —<br>May 2026</div>
         <div class="exp-org">University of Michigan</div>
         <div class="exp-loc">Ann Arbor, MI</div>
       </div>
@@ -5384,7 +5372,7 @@ VT8H9wvxX2P/2Q==" alt="Mustafa Al-Ogaili">
     <div class="project-card reveal">
       <div class="project-cat">Market Analysis</div>
       <div class="project-name">Live Stock Market Display</div>
-      <p class="project-desc">Built a real-time stock visualization for the top 20 S&amp;P 500 stocks on an 8×32 LED matrix. Leveraged Python libraries for data fetching, processing, and smooth display — combining data analytics with hardware control.</p>
+      <p class="project-desc">Built a real-time stock visualization for the top 20 S&amp;P 500 stocks on an 8×32 LED matrix. Leveraged Python libraries for data fetching, processing, and smooth display, combining data analytics with hardware control.</p>
       <div class="project-tags">
         <span class="tag">Python</span>
         <span class="tag">pandas</span>
@@ -5398,7 +5386,7 @@ VT8H9wvxX2P/2Q==" alt="Mustafa Al-Ogaili">
     <div class="project-card reveal">
       <div class="project-cat">Sports Analytics</div>
       <div class="project-name">GOAT Analysis: Messi vs. Ronaldo</div>
-      <p class="project-desc">A data-driven deep dive into football's greatest debate. Analyzed goals, assists, xG, opponent difficulty, and competition output across both careers. Applied machine learning to model performance efficiency — the verdict depends on what you value.</p>
+      <p class="project-desc">A data-driven deep dive into football's greatest debate. Analyzed goals, assists, xG, opponent difficulty, and competition output across both careers. Applied machine learning to model performance efficiency, the verdict depends on what you value.</p>
       <div class="project-tags">
         <span class="tag">Python</span>
         <span class="tag">pandas</span>
@@ -5423,13 +5411,29 @@ VT8H9wvxX2P/2Q==" alt="Mustafa Al-Ogaili">
       <div class="skill-col-title">Languages &amp; Tools</div>
       <div class="skill-pills">
         <div class="skill-pill">Python</div>
-        <div class="skill-pill">R / RStudio</div>
+        <div class="skill-pill">R / R Studio</div>
         <div class="skill-pill">SQL</div>
-        <div class="skill-pill">SAP</div>
-        <div class="skill-pill">Snowflake</div>
-        <div class="skill-pill">Git</div>
-        <div class="skill-pill">Jira</div>
         <div class="skill-pill">Excel</div>
+        <div class="skill-pill">Power Query</div>
+        <div class="skill-pill">Git</div>
+        <div class="skill-pill">STATA</div>
+        <div class="skill-pill">VS Code</div>
+        <div class="skill-pill">JIRA</div>
+      </div>
+    </div>
+
+    <div class="skill-col reveal">
+      <div class="skill-col-title">Libraries &amp; Frameworks</div>
+      <div class="skill-pills">
+        <div class="skill-pill">pandas</div>
+        <div class="skill-pill">NumPy</div>
+        <div class="skill-pill">SciPy</div>
+        <div class="skill-pill">scikit-learn</div>
+        <div class="skill-pill">XGBoost</div>
+        <div class="skill-pill">matplotlib</div>
+        <div class="skill-pill">Seaborn</div>
+        <div class="skill-pill">NLTK</div>
+        <div class="skill-pill">Plotly</div>
       </div>
     </div>
 
@@ -5438,30 +5442,21 @@ VT8H9wvxX2P/2Q==" alt="Mustafa Al-Ogaili">
       <div class="skill-pills">
         <div class="skill-pill">Power BI</div>
         <div class="skill-pill">Tableau</div>
-        <div class="skill-pill">Verafin</div>
+        <div class="skill-pill">Jupyter Notebooks</div>
+        <div class="skill-pill">Salesforce CRM</div>
       </div>
     </div>
 
     <div class="skill-col reveal">
-      <div class="skill-col-title">Data Science</div>
+      <div class="skill-col-title">Analytics &amp; Consulting</div>
       <div class="skill-pills">
-        <div class="skill-pill">Machine Learning</div>
-        <div class="skill-pill">AI / LLMs</div>
-        <div class="skill-pill">NLP</div>
-        <div class="skill-pill">Data Cleaning</div>
-        <div class="skill-pill">Statistical Modeling</div>
-        <div class="skill-pill">RAG Pipelines</div>
-      </div>
-    </div>
-
-    <div class="skill-col reveal">
-      <div class="skill-col-title">Business &amp; Finance</div>
-      <div class="skill-pills">
-        <div class="skill-pill">Financial Modeling</div>
-        <div class="skill-pill">Risk &amp; Compliance</div>
-        <div class="skill-pill">BSA / AML</div>
+        <div class="skill-pill">Data Analytics</div>
+        <div class="skill-pill">Statistical Analysis</div>
+        <div class="skill-pill">Project Management</div>
+        <div class="skill-pill">Stakeholder Management</div>
         <div class="skill-pill">Business Intelligence</div>
-        <div class="skill-pill">Regulatory Reporting</div>
+        <div class="skill-pill">Strategic Planning</div>
+        <div class="skill-pill">Data Cleaning</div>
       </div>
     </div>
   </div>
@@ -5479,8 +5474,8 @@ VT8H9wvxX2P/2Q==" alt="Mustafa Al-Ogaili">
     <div class="edu-card reveal">
       <div class="edu-star">✦</div>
       <div class="edu-info">
-        <div class="edu-tag">Graduating May 2026</div>
-        <div class="edu-degree">Master's of Science in Information — Applied Data Analytics</div>
+        <div class="edu-tag">Master's Degree · May 2026</div>
+        <div class="edu-degree">M.S. in Information — Applied Data Analytics</div>
         <div class="edu-school">University of Michigan — School of Information, Ann Arbor, MI</div>
         <div class="edu-chips">
           <span class="edu-chip">GPA: 3.9 / 4.0</span>
@@ -5516,7 +5511,7 @@ VT8H9wvxX2P/2Q==" alt="Mustafa Al-Ogaili">
       <div class="section-tag">Say Hello</div>
       <h2 class="contact-heading">Let's work<br><em>together.</em></h2>
       <p class="contact-sub">
-        I'm a data analyst and BI professional who genuinely enjoys solving messy problems with clean data. I'm finishing my Master's at Michigan and actively looking for full-time opportunities where I can contribute from day one. If something caught your eye, or you just want to talk data — I'd love to hear from you.
+        I'm a data analyst and BI professional who genuinely enjoys solving messy problems with clean data. I hold a Master's in Applied Data Analytics from the University of Michigan and I'm actively looking for full-time opportunities where I can contribute from day one. If something caught your eye, or you just want to talk data, I'd love to hear from you.
       </p>
     </div>
 
